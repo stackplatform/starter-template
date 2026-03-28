@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="Stack Platform Integration Server" package="com.example.stackplatform.server" version="1.0.0" company="Example" />
+    <app main="app.ServerApp" path="Export" file="StackServer" />
+    
+    <source path="Source" />
+    <source path="../shared" />
+    <source path="../../../Shared" />
+    <source path="../../../Server/Source" />
+    
+    <haxelib name="lime" />
+    <haxelib name="SideWinder" />
+    <haxelib name="snake-server" />
+    <haxelib name="haxe-injection" />
+    <haxelib name="hxwell" />
+    <haxelib name="json2object" />
+    <haxelib name="utest" />
+    <haxelib name="uuid" />
+    <haxelib name="stack-platform-sdk" />
+    
+    
+    <postbuild command="copy-server-hdlls.bat" if="hl" />
+    <postbuild command="copy-server-hdlls.bat" if="hlc" />
+</project>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vbox width="100%" height="100%" padding="20" style="background-color: #F4F4F9;">
+    <label text="Stack Platform Starter Template" style="font-size: 24px; font-weight: bold; margin-bottom: 20px;" />
+    
+    <hbox width="100%" padding="15" style="background-color: #FFFFFF; border: 1px solid #DDDDDD; border-radius: 8px;">
+        <vbox width="100%">
+            <label id="projectLabel" text="Project Name" style="font-size: 18px; margin-bottom: 5px;" />
+            <label id="statusLabel" text="Loading status..." style="font-size: 14px; color: #666666;" />
+        </vbox>
+        <button id="refreshBtn" text="Refresh" flat="true" style="icon: 'icons/refresh.png';" />
+    </hbox>
+
+    <label text="Architecture Overview" style="font-weight: bold; margin-top: 30px; margin-bottom: 10px;" />
+    <label text="1. Client calls Local Server (/api/project)" style="color: #444444;" />
+    <label text="2. Local Server calls Stack Platform SaaS with API Key" style="color: #444444;" />
+    <label text="3. Response is mapped and displayed above" style="color: #444444;" />
+</vbox>

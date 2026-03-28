@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+
+	<meta title="Stack Platform Starter" package="com.example.stackplatform" version="1.0.0" company="Example" />
+	<app main="app.Main" path="Export" file="StackStarter" />
+	
+	<window width="800" height="600" background="#F4F4F9" fps="60" hardware="true" allow-high-dpi="true" />
+
+	<source path="Source" />
+    <source path="../shared" />
+	
+    <haxelib name="haxeui-core" />
+    <haxelib name="haxeui-html5" if="html5" />
+    <haxelib name="haxeui-openfl" unless="html5" />
+	<haxelib name="openfl" />
+	<haxelib name="actuate" />
+    <haxelib name="SideWinder" />
+    <haxelib name="Json2Object" />
+    <haxelib name="hx-injection" />
+    <haxelib name="stack-platform-sdk" />
+
+	<assets path="Assets" />
+</project>

@@ -1,0 +1,12 @@
+# Build configuration for the SideWinder-based local integration server.
+-cp Source
+-cp ../shared
+-cp ../../../Shared
+-cp ../../../Server/Source
+-main app.ServerApp
+-lib SideWinder
+-lib haxe-injection
+-lib snake-server
+-lib stack-platform-sdk
+-D hl
+-hl server.hl

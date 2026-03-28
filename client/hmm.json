@@ -1,0 +1,18 @@
+{
+  "dependencies": [
+    { "name": "SideWinder", "type": "git", "url": "https://github.com/Falagard/SideWinder", "ref": "master" },
+    { "name": "hx-injection", "type": "git", "url": "https://github.com/Falagard/hx-injection", "ref": "master" },
+    { "name": "Json2Object", "type": "haxelib", "version": "latest" },
+    { "name": "haxeui-core", "type": "haxelib", "version": "latest" },
+    { "name": "haxeui-html5", "type": "haxelib", "version": "latest" },
+    { "name": "haxeui-openfl", "type": "haxelib", "version": "latest" },
+    { "name": "openfl", "type": "haxelib", "version": "latest" },
+    { "name": "actuate", "type": "haxelib", "version": "latest" },
+    {
+      "name": "stack-platform-sdk",
+      "type": "git",
+      "url": "https://github.com/stackplatform/stack-platform-sdk",
+      "ref": "main"
+    }
+  ]
+}

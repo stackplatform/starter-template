@@ -1,0 +1,53 @@
+{
+    "dependencies": [
+        {
+            "name": "json2object",
+            "type": "haxelib",
+            "version": null
+        },
+        {
+            "name": "SideWinder",
+            "type": "git",
+            "dir": null,
+            "ref": "adc7c941b39f718491b4481fee63b3ffbc15e931",
+            "url": "https://github.com/Falagard/SideWinder"
+        },
+        {
+            "name": "haxe-injection",
+            "type": "git",
+            "dir": null,
+            "ref": "a27b787375554b02b9fd5328911d0ef985e64101",
+            "url": "https://github.com/Falagard/haxe-injection"
+        },
+        {
+            "name": "lime",
+            "type": "haxelib",
+            "version": null
+        },
+        {
+            "name": "snake-server",
+            "type": "git",
+            "dir": null,
+            "ref": "fc3a072e6f6e7480a84d674dd1f731b52d9752ac",
+            "url": "https://github.com/Falagard/snake-server"
+        },
+        {
+            "name": "hxwell",
+            "type": "git",
+            "dir": null,
+            "ref": "3b83d68d9fff00d1397f1d246aea151cda4957fe",
+            "url": "https://github.com/falagard/hxwell"
+        },
+        {
+            "name": "utest",
+            "type": "haxelib",
+            "version": null
+        },
+        {
+            "name": "stack-platform-sdk",
+            "type": "git",
+            "url": "https://github.com/stackplatform/stack-platform-sdk",
+            "ref": "b9c2be183c5ac2fe0c11912c7fc6d7ede7a0b8bf"
+        }
+    ]
+}
