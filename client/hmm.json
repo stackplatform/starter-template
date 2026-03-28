@@ -41,8 +41,8 @@
             "name": "haxe-injection",
             "type": "git",
             "dir": null,
-            "ref": "7bb93913446ce60cacac1fb695038d8c204aec0f",
-            "url": "https://github.com/paulsgcross/haxe-injection"
+            "ref": "a27b787375554b02b9fd5328911d0ef985e64101",
+            "url": "https://github.com/Falagard/haxe-injection"
         },
         {
             "name": "markdown-openfl-textfield",
