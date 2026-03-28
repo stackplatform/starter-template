@@ -1,18 +1,64 @@
 {
-  "dependencies": [
-    { "name": "SideWinder", "type": "git", "url": "https://github.com/Falagard/SideWinder", "ref": "master" },
-    { "name": "hx-injection", "type": "git", "url": "https://github.com/Falagard/hx-injection", "ref": "master" },
-    { "name": "Json2Object", "type": "haxelib", "version": "latest" },
-    { "name": "haxeui-core", "type": "haxelib", "version": "latest" },
-    { "name": "haxeui-html5", "type": "haxelib", "version": "latest" },
-    { "name": "haxeui-openfl", "type": "haxelib", "version": "latest" },
-    { "name": "openfl", "type": "haxelib", "version": "latest" },
-    { "name": "actuate", "type": "haxelib", "version": "latest" },
-    {
-      "name": "stack-platform-sdk",
-      "type": "git",
-      "url": "https://github.com/stackplatform/stack-platform-sdk",
-      "ref": "main"
-    }
-  ]
+    "dependencies": [
+        {
+            "name": "Json2Object",
+            "type": "haxelib",
+            "version": null
+        },
+        {
+            "name": "haxeui-core",
+            "type": "haxelib",
+            "version": null
+        },
+        {
+            "name": "haxeui-html5",
+            "type": "haxelib",
+            "version": null
+        },
+        {
+            "name": "openfl",
+            "type": "haxelib",
+            "version": null
+        },
+        {
+            "name": "lime",
+            "type": "haxelib",
+            "version": null
+        },
+        {
+            "name": "actuate",
+            "type": "haxelib",
+            "version": null
+        },
+        {
+            "name": "SideWinder",
+            "type": "git",
+            "dir": null,
+            "ref": "fec54307a87ad10679dbb7b4ae87c86f9a49e456",
+            "url": "https://github.com/Falagard/SideWinder"
+        },
+        {
+            "name": "haxe-injection",
+            "type": "git",
+            "dir": null,
+            "ref": "7bb93913446ce60cacac1fb695038d8c204aec0f",
+            "url": "https://github.com/paulsgcross/haxe-injection"
+        },
+        {
+            "name": "markdown-openfl-textfield",
+            "type": "haxelib",
+            "version": null
+        },
+        {
+            "name": "hxcpp",
+            "type": "haxelib",
+            "version": null
+        },
+        {
+            "name": "stackdeploy",
+            "type": "git",
+            "url": "https://github.com/stackplatform/stackdeploy",
+            "ref": "main"
+        }
+    ]
 }

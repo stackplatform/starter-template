@@ -13,15 +13,15 @@ The template follows a 3-tier architecture designed for security and scalability
 ## Prerequisites
 
 *   **Haxe 4.x**: The foundation for both client and server.
-*   **Lime/OpenFL**: Used for the HaxeUI client.
-*   **SideWinder**: The Haxe web server framework.
+*   **Haxe Maintenance Manager (HMM)**: Used to manage project-specific library versions.
+    *   `haxelib install hmm`
+    *   `haxelib run hmm setup`
 *   **Haxe Libraries**:
-    *   `haxelib install SideWinder`
-    *   `haxelib install haxeui-core`
-    *   `haxelib install haxeui-openfl` (for desktop/mobile)
-    *   `haxelib install haxeui-html5` (for web)
-    *   `haxelib install hx-injection`
-    *   `haxelib install Json2Object`
+    From the root or sub-project directories, run:
+    ```bash
+    haxelib run hmm install
+    ```
+    This will install all required libraries including **SideWinder**, **HaxeUI**, **OpenFL**, and the **Stack Platform SDK**.
 
 ## Getting Started
 
@@ -39,6 +39,7 @@ Navigate to the `server/` directory and build/run the HL (HashLink) target:
 
 ```bash
 cd server
+haxelib run hmm install
 haxe server.hxml
 hl server.hl
 ```
@@ -50,6 +51,7 @@ Navigate to the `client/` directory and run the Lime test command:
 
 ```bash
 cd client
+haxelib run hmm install
 lime test hl
 ```
 
