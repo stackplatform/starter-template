@@ -46,8 +46,9 @@
         {
             "name": "stack-platform-sdk",
             "type": "git",
+            "dir": null,
             "url": "https://github.com/stackplatform/stack-platform-sdk",
-            "ref": "main"
+            "ref": "d8224fcd037fcbbe73cc263f8afee5809c3735c0"
         },
         {
             "name": "stackdeploy",
