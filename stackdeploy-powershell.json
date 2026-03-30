@@ -1,0 +1,28 @@
+{
+  "projectId": "my-haxe-app",
+  "version": "auto",
+  "description": "Multi-platform Haxe application (PowerShell version)",
+  "builds": [
+    {
+      "name": "Windows x64",
+      "platform": "windows",
+      "arch": "x64",
+      "command": "powershell -File scripts/build-windows-x64.ps1",
+      "artifact": "dist/app-windows-x64.zip"
+    },
+    {
+      "name": "Linux x64",
+      "platform": "linux",
+      "arch": "x64",
+      "command": "bash scripts/build-linux-x64.sh",
+      "artifact": "dist/app-linux-x64.zip"
+    },
+    {
+      "name": "macOS x64",
+      "platform": "macos",
+      "arch": "x64",
+      "command": "bash scripts/build-macos-x64.sh",
+      "artifact": "dist/app-macos-x64.zip"
+    }
+  ]
+}

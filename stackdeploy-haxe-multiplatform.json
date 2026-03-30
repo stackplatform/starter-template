@@ -1,0 +1,28 @@
+{
+  "projectId": "my-haxe-app",
+  "version": "auto",
+  "description": "Multi-platform Haxe application build",
+  "builds": [
+    {
+      "name": "Linux x64",
+      "platform": "linux",
+      "arch": "x64",
+      "command": "haxe build-linux-x64.hxml && zip -r dist/app-linux-x64.zip bin/",
+      "artifact": "dist/app-linux-x64.zip"
+    },
+    {
+      "name": "Windows x64",
+      "platform": "windows",
+      "arch": "x64",
+      "command": "haxe build-windows-x64.hxml && powershell Compress-Archive -Path bin -DestinationPath dist/app-windows-x64.zip",
+      "artifact": "dist/app-windows-x64.zip"
+    },
+    {
+      "name": "macOS x64",
+      "platform": "macos",
+      "arch": "x64",
+      "command": "haxe build-macos-x64.hxml && zip -r dist/app-macos-x64.zip bin/",
+      "artifact": "dist/app-macos-x64.zip"
+    }
+  ]
+}

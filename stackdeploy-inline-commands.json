@@ -1,0 +1,28 @@
+{
+  "projectId": "my-app-powershell",
+  "version": "auto",
+  "description": "Cross-platform builds using inline PowerShell commands",
+  "builds": [
+    {
+      "name": "Windows x64 Build",
+      "platform": "windows",
+      "arch": "x64",
+      "command": "powershell -Command \"haxe build-windows-x64.hxml; Compress-Archive -Path bin -DestinationPath dist/app-windows-x64.zip -Force\"",
+      "artifact": "dist/app-windows-x64.zip"
+    },
+    {
+      "name": "Linux x64 Build",
+      "platform": "linux",
+      "arch": "x64",
+      "command": "haxe build-linux-x64.hxml && zip -r dist/app-linux-x64.zip bin/",
+      "artifact": "dist/app-linux-x64.zip"
+    },
+    {
+      "name": "macOS x64 Build",
+      "platform": "macos",
+      "arch": "x64",
+      "command": "haxe build-macos-x64.hxml && zip -r dist/app-macos-x64.zip bin/",
+      "artifact": "dist/app-macos-x64.zip"
+    }
+  ]
+}

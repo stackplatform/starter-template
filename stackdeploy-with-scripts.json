@@ -1,0 +1,28 @@
+{
+  "projectId": "self",
+  "version": "auto",
+  "description": "Server application with external build scripts",
+  "builds": [
+    {
+      "name": "Linux x64 Server",
+      "platform": "linux",
+      "arch": "x64",
+      "command": "bash ./scripts/build-linux-x64.sh",
+      "artifact": "dist/server-linux-x64.zip"
+    },
+    {
+      "name": "Windows x64 Server",
+      "platform": "windows",
+      "arch": "x64",
+      "command": "powershell -ExecutionPolicy Bypass -File ./scripts/build-windows-x64.ps1",
+      "artifact": "dist/server-windows-x64.zip"
+    },
+    {
+      "name": "macOS x64 Server",
+      "platform": "macos",
+      "arch": "x64",
+      "command": "bash ./scripts/build-macos-x64.sh",
+      "artifact": "dist/server-macos-x64.zip"
+    }
+  ]
+}
