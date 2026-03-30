@@ -22,3 +22,8 @@ Thumbs.db
 
 # Node modules (if applicable)
 node_modules/
+
+# Build artifacts and releases
+*.zip
+builds/
+server/static/client/
