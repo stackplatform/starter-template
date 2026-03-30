@@ -116,6 +116,7 @@ class ServerConfig implements IServerConfig {
 				return env;
 			}
 		}
+		
 		try {
 			var content = sys.io.File.getContent(path);
 			var lines = content.split("\n");

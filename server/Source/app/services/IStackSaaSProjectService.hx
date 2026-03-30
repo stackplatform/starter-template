@@ -8,9 +8,9 @@ import app.models.ProjectModels.ProjectInfo;
 @:auto_client
 interface IStackSaaSProjectService {
     /**
-     * Fetches the current project info using the "self" magic route.
-     * This route automatically identifies the project associated with the X-Project-Key header.
+     * Fetches the current project info using the "self" magic route or a specific ID.
+     * This route automatically identifies the project associated with the X-Project-Key header if "self" is used.
      */
-    @get("/api/projects/self")
-    public function getProjectSelf():ProjectInfo;
+    @get("/v1/projects/:projectId")
+    public function getProjectInfo(projectId:String):ProjectInfo;
 }

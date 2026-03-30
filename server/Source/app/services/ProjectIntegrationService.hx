@@ -43,7 +43,7 @@ class ProjectIntegrationService implements IProjectIntegrationService {
 
         try {
             // Real call to the SaaS via the "self" magic route
-            var projectInfo = this.saasClient.getProjectSelf();
+            var projectInfo = this.saasClient.getProjectInfo("self");
             
             if (projectInfo == null) {
                 HybridLogger.error("SaaS returned null project info - possible API key error or SaaS issue");
