@@ -62,7 +62,7 @@ The client will open and automatically fetch the project status from your local 
 *   **Shared Contracts**: See `shared/app/services/IProjectIntegrationService.hx` for how to define API contracts once and use them in both client and server.
 *   **AutoRouter**: The server uses SideWinder's `AutoRouter` to automatically map interface methods to HTTP endpoints.
 *   **AutoClientAsync**: The client uses `AutoClientAsync` to generate a type-safe API client from the shared interface.
-*   **Dependency Injection**: Decoupled service implementations using `hx-injection`.
+*   **Dependency Injection**: Decoupled service implementations using `haxe-injection`.
 *   **Secret Management**: Pattern for keeping your API Key secure by never exposing it to the client side.
 
 ## Security Warning
