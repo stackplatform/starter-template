@@ -1,21 +1,18 @@
 {
-  "projectId": "example-project",
-  "version": "auto",
+  "version": "0.0.0",
   "description": "Starter template release",
   "builds": [
     {
-      "name": "server-linux-x64",
-      "platform": "linux",
-      "arch": "x64",
-      "command": "haxe -cp scripts --run BuildMock linux",
-      "artifact": "dist/server-linux-x64.zip"
-    },
-    {
-      "name": "server-windows-x64",
+      "name": "Server",
       "platform": "windows",
       "arch": "x64",
-      "command": "haxe -cp scripts --run BuildMock windows",
-      "artifact": "dist/server-windows-x64.zip"
+      "artifact": "builds/server-windows-x64-0.0.0.zip"
+    },
+    {
+      "name": "Client",
+      "platform": "windows",
+      "arch": "x64",
+      "artifact": "builds/client-windows-x64-0.0.0.zip"
     }
   ]
 }
