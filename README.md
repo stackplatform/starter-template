@@ -77,6 +77,55 @@ The client will open and automatically fetch the project status from your local 
 3.  **Implement the logic**: Update `server/Source/app/services/ProjectIntegrationService.hx`.
 4.  **Update the UI**: Modify `client/Assets/dashboard.xml` and handle the new data in `client/Source/app/views/DashboardView.hx`.
 
+## Build & Release Workflow
+
+This template includes a pre-configured build and release workflow using the **StackDeploy CLI**.
+
+### 1. Local Releases
+
+You can create and push releases directly from your local machine:
+
+```bash
+# Install the StackDeploy CLI
+haxelib git stackdeploy https://github.com/Falagard/HaxeStackPlatform.git main stackdeploy
+
+# Push a new release based on stackdeploy.json
+export STACK_PROJECT_KEY="your-api-key"
+haxelib run stackdeploy push
+```
+
+### 2. GitHub Actions Integration
+
+A GitHub Actions workflow is included in `.github/workflows/build-and-push.yml`. It handles:
+
+1.  **Release Creation**: Automatically creates a new release in StackDeploy when you push a version tag (e.g., `v1.0.5`).
+2.  **Matrix Builds**: Runs parallel build jobs for Linux and Windows.
+3.  **Artifact Upload**: Uploads the compiled binaries directly to StackDeploy storage.
+4.  **Finalization**: Marks the release as ready for deployment.
+
+**Setup**:
+Add your `STACK_PROJECT_KEY` as a **GitHub Secret** in your repository settings.
+
+### 3. Configuration (`stackdeploy.json`)
+
+Customize your build targets and artifact paths in `stackdeploy.json`:
+
+```json
+{
+  "projectId": "example-project",
+  "version": "auto",
+  "builds": [
+    {
+      "name": "server-linux-x64",
+      "platform": "linux",
+      "arch": "x64",
+      "command": "sh scripts/build-linux.sh",
+      "artifact": "dist/server-linux-x64.zip"
+    }
+  ]
+}
+```
+
 ---
 
 © 2026 Stack Platform. This template is intended as an example for developers. Use it as a starting point for your own projects!

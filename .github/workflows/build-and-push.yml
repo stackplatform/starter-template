@@ -1,0 +1,86 @@
+name: Build & Push Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  create_release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    outputs:
+      release_id: ${{ steps.create.outputs.release_id }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Haxe
+        uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.3.3
+      - name: Install StackDeploy CLI
+        run: |
+          haxelib git stackdeploy https://github.com/Falagard/HaxeStackPlatform.git main stackdeploy
+      - id: create
+        name: Create Release in StackDeploy
+        run: |
+          RELEASE_ID=$(haxelib run stackdeploy release create --version ${{ github.ref_name }} --description "Automated build from GHA")
+          echo "release_id=$RELEASE_ID" >> $GITHUB_OUTPUT
+        env:
+          STACK_PROJECT_KEY: ${{ secrets.STACK_PROJECT_KEY }}
+
+  build_artifacts:
+    name: Build Artifacts
+    needs: create_release
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            platform: linux
+            arch: x64
+            script: haxe -cp scripts --run BuildMock linux
+            artifact: dist/server-linux-x64.zip
+          - os: windows-latest
+            platform: windows
+            arch: x64
+            script: haxe -cp scripts --run BuildMock windows
+            artifact: dist/server-windows-x64.zip
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Haxe
+        uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.3.3
+      - name: Install StackDeploy CLI
+        run: |
+          haxelib git stackdeploy https://github.com/Falagard/HaxeStackPlatform.git main stackdeploy
+      - name: Run Build
+        run: ${{ matrix.script }}
+      - name: Upload Build to StackDeploy
+        run: |
+          haxelib run stackdeploy build upload \
+            --release ${{ needs.create_release.outputs.release_id }} \
+            --platform ${{ matrix.platform }} \
+            --arch ${{ matrix.arch }} \
+            --file ${{ matrix.artifact }}
+        env:
+          STACK_PROJECT_KEY: ${{ secrets.STACK_PROJECT_KEY }}
+
+  finalize_release:
+    name: Finalize Release
+    needs: [create_release, build_artifacts]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Haxe
+        uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.3.3
+      - name: Install StackDeploy CLI
+        run: |
+          haxelib git stackdeploy https://github.com/Falagard/HaxeStackPlatform.git main stackdeploy
+      - name: Finalize Release in StackDeploy
+        run: |
+          haxelib run stackdeploy release finalize --release ${{ needs.create_release.outputs.release_id }}
+        env:
+          STACK_PROJECT_KEY: ${{ secrets.STACK_PROJECT_KEY }}
