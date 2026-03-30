@@ -43,14 +43,26 @@ class ProjectIntegrationService implements IProjectIntegrationService {
 
         try {
             // Real call to the SaaS via the "self" magic route
-            var projectInfo = this.saasClient.getProjectInfo("self");
+            // The platform returns a full Project model, but our UI expects a simplified ProjectInfo
+            var raw:Dynamic = this.saasClient.getProjectInfo("self");
             
-            if (projectInfo == null) {
+            if (raw == null) {
                 HybridLogger.error("SaaS returned null project info - possible API key error or SaaS issue");
                 throw "SaaS returned null project info";
             }
 
-            HybridLogger.info('Project info retrieved: ${projectInfo.name}');
+            // Map platform fields to our local ProjectInfo DTO:
+            // - isActive (Bool) -> status (String)
+            // - updatedAt (String) -> lastSync (Date)
+            var projectInfo:ProjectInfo = {
+                id: raw.id,
+                name: raw.name,
+                status: raw.isActive ? "Active" : "Inactive",
+                lastSync: (raw.updatedAt != null && raw.updatedAt != "") ? Date.fromString(raw.updatedAt) : Date.now(),
+                saasUrl: raw.frontendUrl
+            };
+            
+            HybridLogger.info('Project info retrieved: ${projectInfo.name} (Status: ${projectInfo.status})');
             return projectInfo;
         } catch (e:Dynamic) {
             HybridLogger.error('Failed to fetch project info from $apiUrl: $e');
