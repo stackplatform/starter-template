@@ -1,0 +1,24 @@
+# Haxe build artifacts
+.haxelib/
+Export/
+*.hl
+*.js
+*.hxcpp
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node modules (if applicable)
+node_modules/

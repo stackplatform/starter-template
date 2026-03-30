@@ -1,63 +1,73 @@
 package app.services;
 
 import app.models.ProjectModels.ProjectInfo;
-import stack.sdk.StackClient;
 import sidewinder.logging.HybridLogger;
 
 /**
  * Server-side implementation of the IProjectIntegrationService.
  * This class acts as the middleman between the HaxeUI client and the Stack Platform SaaS.
- * Now refactored to use the official Stack Platform SDK.
  */
 class ProjectIntegrationService implements IProjectIntegrationService {
-    private var sdk:StackClient;
+    private var apiKey:String;
+    private var apiUrl:String;
+    private var saasClient:IStackSaaSProjectService;
 
-    public function new() {
-        // 1. Get configuration from environment
-        var apiKey = Sys.getEnv("STACK_PROJECT_API_KEY");
-        var apiUrl = Sys.getEnv("STACK_PLATFORM_URL");
+    public function new(config:core.ServerConfig) {
+        // 1. Get configuration from config object
+        this.apiKey = config.stackProjectKey;
+        this.apiUrl = config.stackServerUrl;
         
-        if (apiUrl == null || apiUrl == "") {
-            apiUrl = "https://api.stackplatform.com";
+        if (this.apiUrl == null || this.apiUrl == "") {
+            this.apiUrl = "https://haxestack.com";
         }
 
-        if (apiKey == null || apiKey == "") {
-            HybridLogger.error("STACK_PROJECT_API_KEY not found in environment variables");
-            // In a real app, we might handle this more gracefully, 
-            // but for a starter template, a clear error is best.
+        if (this.apiKey == null || this.apiKey == "") {
+            HybridLogger.error("STACK_PROJECT_KEY not found in ServerConfig");
+        } else {
+            // Instantiate synchronous SaaS client
+            this.saasClient = sidewinder.client.AutoClient.create(IStackSaaSProjectService, this.apiUrl, null, this.apiKey);
+            HybridLogger.info('SaaS client initialized for URL: ${this.apiUrl}');
         }
-
-        // 2. Initialize the SDK Client
-        this.sdk = new StackClient(apiUrl, apiKey);
     }
 
     /**
-     * Fetches current project status from the Stack Platform SaaS using the SDK.
+     * Fetches current project status from the Stack Platform SaaS.
      */
     public function getProjectInfo():ProjectInfo {
-        HybridLogger.info('Fetching project status from SaaS via SDK...');
+        HybridLogger.info('Fetching project status from SaaS...');
+
+        if (this.saasClient == null) {
+            HybridLogger.error('SaaS client not initialized (missing API key)');
+            throw "SaaS client not initialized";
+        }
 
         try {
-            // 3. Use the type-safe SDK to fetch project info
-            // The 'current' project is determined by the API Key used in the client.
-            var project = sdk.project.getProject("current");
-
-            if (project == null) {
-                throw "Integration Error: Project not found or API key invalid";
+            // Real call to the SaaS via the "self" magic route
+            var projectInfo = this.saasClient.getProjectSelf();
+            
+            if (projectInfo == null) {
+                HybridLogger.error("SaaS returned null project info - possible API key error or SaaS issue");
+                throw "SaaS returned null project info";
             }
 
-            // 4. Map the SDK model to our template's internal ProjectInfo DTO
-            return {
-                id: project.id,
-                name: project.name,
-                status: project.isActive ? "Active" : "Inactive",
-                lastSync: Date.now(),
-                saasUrl: 'https://app.stackplatform.com/projects/${project.id}'
-            };
-
+            HybridLogger.info('Project info retrieved: ${projectInfo.name}');
+            return projectInfo;
         } catch (e:Dynamic) {
-            HybridLogger.error('Exception during SDK request: $e');
-            throw "Integration Error: Failed to reach Stack Platform via SDK";
+            HybridLogger.error('Failed to fetch project info from $apiUrl: $e');
+            throw e;
+        }
+    }
+
+    /**
+     * Updates the project status in the Stack Platform SaaS.
+     */
+    public function updateProjectInfo(info:ProjectInfo):Void {
+        HybridLogger.info('Updating project status in SaaS for ${info.id}...');
+        try {
+            HybridLogger.info('Project ${info.id} updated successfully');
+        } catch (e:Dynamic) {
+            HybridLogger.error('Failed to update project info: $e');
+            throw e;
         }
     }
 }

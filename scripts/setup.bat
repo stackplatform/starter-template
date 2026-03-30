@@ -9,7 +9,7 @@ haxelib install haxeui-openfl
 haxelib install haxeui-html5
 haxelib install openfl
 haxelib install actuate
-haxelib install hx-injection
+haxelib install haxe-injection
 haxelib install Json2Object
 
 :: 2. Setup Configuration

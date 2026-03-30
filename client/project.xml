@@ -16,8 +16,9 @@
 	<haxelib name="actuate" />
     <haxelib name="SideWinder" />
     <haxelib name="Json2Object" />
-    <haxelib name="hx-injection" />
-    <haxelib name="stack-platform-sdk" />
-
+	<haxelib name="haxe-injection" />
 	<assets path="Assets" />
+	
+	<!-- Post-build copy for HTML5 builds only -->
+	<postbuild command="copy-html5-build.bat" if="html5" />
 </project>

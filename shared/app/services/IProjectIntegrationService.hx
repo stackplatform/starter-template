@@ -11,8 +11,7 @@ interface IProjectIntegrationService {
     /**
      * Retrieves the current project information from the local server.
      * The local server acts as an integration layer by calling the Stack Platform SaaS.
-     * 
-     * @get("/api/project")
      */
+    @get("/api/project")
     public function getProjectInfo():ProjectInfo;
 }

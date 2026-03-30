@@ -4,6 +4,7 @@ import haxe.ui.containers.VBox;
 import app.services.IProjectIntegrationService;
 import app.models.ProjectModels.ProjectInfo;
 import sidewinder.client.AutoClientAsync;
+import sidewinder.data.CookieJar;
 
 /**
  * Controller for the Dashboard View.
@@ -15,11 +16,16 @@ class DashboardView extends VBox {
         super();
         
         // Connect to the local integration server
-        var serverUrl = "http://localhost:8081";
-        var client = AutoClientAsync.create(IProjectIntegrationService, serverUrl);
+        var serverUrl = "http://localhost:8082";
+        var jar = new CookieJar();
+        var client = AutoClientAsync.create(IProjectIntegrationService, serverUrl, jar);
 
         // Fetch project info when the view is created
-        refreshProject(client);
+        if (client != null) {
+            refreshProject(client);
+        } else {
+            this.findComponent("statusLabel", haxe.ui.components.Label).text = "Error: Client could not be created.";
+        }
         
         // Setup manual refresh button (defined in XML)
         this.findComponent("refreshBtn", haxe.ui.components.Button).onClick = function(_) {
