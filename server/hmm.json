@@ -9,7 +9,7 @@
             "name": "SideWinder",
             "type": "git",
             "dir": null,
-            "ref": "fec54307a87ad10679dbb7b4ae87c86f9a49e456",
+            "ref": "3ebf48d527b09b2f389ce725fafaf28d19cfcb36",
             "url": "https://github.com/Falagard/SideWinder"
         },
         {
@@ -48,7 +48,7 @@
             "type": "git",
             "dir": null,
             "url": "https://github.com/stackplatform/stack-platform-sdk",
-            "ref": "d37f132f4c41e6dd4aede4c6c50191130c2725c4"
+            "ref": "b3bd81c04851f06cec053c802452a41a69b952b4"
         },
         {
             "name": "stackdeploy",
