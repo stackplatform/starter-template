@@ -1,0 +1,7 @@
+{
+    "api": {
+        "host": "http://localhost:8082",
+        "timeout": 10000
+    },
+    "debug": true
+}

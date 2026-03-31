@@ -15,8 +15,9 @@ class DashboardView extends VBox {
 	public function new() {
 		super();
 
-		// Connect to the local integration server
-		var serverUrl = "http://localhost:8080";
+		// Connect to the local integration server using configuration
+		var config = app.services.ConfigService.instance.config;
+		var serverUrl = config.api.host;
 		var jar = new CookieJar();
 		var client = AutoClientAsync.create(IProjectIntegrationService, serverUrl, jar);
 
