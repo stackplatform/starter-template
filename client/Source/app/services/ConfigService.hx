@@ -2,8 +2,10 @@ package app.services;
 
 import haxe.Http;
 import haxe.Json;
+#if sys
 import sys.FileSystem;
 import sys.io.File;
+#end
 import app.models.ConfigModels.AppConfig;
 import json2object.JsonParser;
 
