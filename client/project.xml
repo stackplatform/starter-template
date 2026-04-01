@@ -21,4 +21,10 @@
 	
 	<!-- Post-build copy for HTML5 builds only -->
 	<postbuild command="copy-html5-build.bat" if="html5" />
+
+	<!-- Automatic Client Updater integration for HashLink builds -->
+	<section if="hl">
+		<copy file="../updater/bin/updater.hl" to="Export/hl/bin/updater.hl" />
+		<copy file="Assets/updater-config.json" to="Export/hl/bin/updater-config.json" />
+	</section>
 </project>

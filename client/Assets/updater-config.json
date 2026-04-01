@@ -1,0 +1,8 @@
+{
+  "serverUrl": "http://localhost:5000",
+  "projectId": "self",
+  "apiKey": "guest-token-123",
+  "targetName": "client",
+  "targetExecutable": "Export/hl/bin/Client.exe",
+  "currentBuildId": "initial"
+}

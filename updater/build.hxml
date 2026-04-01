@@ -1,0 +1,7 @@
+-cp Source
+-D no-deprecation-warnings
+-D message-reporting=pretty
+-main UpdaterApp
+
+# Target HashLink for consistency with the client
+-hl bin/updater.hl
