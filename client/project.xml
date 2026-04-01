@@ -2,7 +2,7 @@
 <project>
 
 	<meta title="Stack Platform Starter" package="com.example.stackplatform" version="1.0.0" company="Example" />
-	<app main="app.Main" path="Export" file="StackStarter" />
+	<app main="app.Main" path="Export" file="Client" />
 	
 	<window width="800" height="600" background="#F4F4F9" fps="60" hardware="true" allow-high-dpi="true" />
 

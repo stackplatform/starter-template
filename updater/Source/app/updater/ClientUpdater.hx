@@ -13,8 +13,8 @@ class ClientUpdater {
         trace('Checking for updates: $url');
 
         var request = new Http(url);
-        if (config.apiKey != null) {
-            request.setHeader("Authorization", 'Bearer ${config.apiKey}');
+        if (config.projectApiKey != null) {
+            request.setHeader("Authorization", 'Bearer ${config.projectApiKey}');
         }
 
         var build:Dynamic = null;

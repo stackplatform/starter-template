@@ -6,5 +6,5 @@ typedef UpdaterConfig = {
     var targetName:String;          // e.g. "client"
     var targetExecutable:String;    // e.g. "Export/hl/bin/Client.exe"
     @:optional var currentBuildId:String;
-    @:optional var apiKey:String;
+    @:optional var projectApiKey:String;
 }

@@ -1,0 +1,8 @@
+{
+  "serverUrl": "http://127.0.0.1:8081",
+  "projectId": "self",
+  "projectApiKey": "YOUR_PROJECT_API_KEY",
+  "targetName": "client",
+  "targetExecutable": "Export/hl/bin/Client.exe",
+  "currentBuildId": "initial"
+}

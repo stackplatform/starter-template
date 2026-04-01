@@ -24,7 +24,9 @@ Thumbs.db
 node_modules/
 
 # Build artifacts and releases
-*.zip
-builds/
+*.tmp
+.env
+updater-config.json
+/builds/
 server/static/client/
 build_number
