@@ -1,18 +1,4 @@
 {
-  "version": "0.0.1",
-  "description": "Starter template release",
-  "builds": [
-    {
-      "name": "Server",
-      "platform": "windows",
-      "arch": "x64",
-      "artifact": "builds/server-windows-x64-0.0.1.zip"
-    },
-    {
-      "name": "Client",
-      "platform": "windows",
-      "arch": "x64",
-      "artifact": "builds/client-windows-x64-0.0.1.zip"
-    }
-  ]
+  "version": "1.0.0",
+  "description": "Starter template release"
 }
