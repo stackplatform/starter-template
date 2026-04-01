@@ -39,14 +39,14 @@
             "name": "SideWinder",
             "type": "git",
             "dir": null,
-            "ref": "3ebf48d527b09b2f389ce725fafaf28d19cfcb36",
+            "ref": "main",
             "url": "https://github.com/Falagard/SideWinder"
         },
         {
             "name": "haxe-injection",
             "type": "git",
             "dir": null,
-            "ref": "a27b787375554b02b9fd5328911d0ef985e64101",
+            "ref": "main",
             "url": "https://github.com/Falagard/haxe-injection"
         },
         {
