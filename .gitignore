@@ -27,3 +27,4 @@ node_modules/
 *.zip
 builds/
 server/static/client/
+build_number
