@@ -31,7 +31,8 @@ class ServerBootstrap extends Application {
 		config = new ServerConfig();
 		// Allow subclasses to modify config before init
 		configure();
-		if (autoInit) init();
+		if (autoInit)
+			init();
 	}
 
 	public function configure():Void {
@@ -41,6 +42,7 @@ class ServerBootstrap extends Application {
 	public function init():Void {
 		HybridLogger.init();
 		HybridLogger.addProvider(new sidewinder.logging.ConsoleLogProvider());
+		//HybridLogger.addprovider(new sidewinder.logging.SqliteLogProvider());
 
 		// Configure SideWinderRequestHandler
 		BaseHTTPRequestHandler.protocolVersion = config.protocol;
@@ -53,7 +55,7 @@ class ServerBootstrap extends Application {
 		// DI Initialization for the main thread
 		ThreadBootstrap.configureServices = configureServices;
 		ThreadBootstrap.initThread();
-		
+
 		// Run migrations once on the main thread
 		DI.get(IDatabaseService).runMigrations();
 		// DI.get(ILogDatabaseService).runMigrations(); // Commented out if not available
@@ -68,11 +70,12 @@ class ServerBootstrap extends Application {
 
 		// Start Web Server
 		var serverType = config.useLime ? sidewinder.core.WebServerType.SnakeServer : sidewinder.core.WebServerType.HxWell;
-		
+
 		// Setup worker islands with thread bootstrap hook
 		var numIslandsStr = Sys.getEnv("SIDEWINDER_ISLANDS");
 		var numIslands = numIslandsStr != null ? Std.parseInt(numIslandsStr) : 4;
-		if (numIslands == null || numIslands < 1) numIslands = 4;
+		if (numIslands == null || numIslands < 1)
+			numIslands = 4;
 
 		var islandManager = new IslandManager(numIslands, ThreadBootstrap.initThread);
 		httpServer = WebServerFactory.create(serverType, config.host, config.port, SideWinderRequestHandler, config.directory, islandManager);
@@ -82,7 +85,7 @@ class ServerBootstrap extends Application {
 	public function configureServices(services:ServiceCollection):Void {
 		services.addConfig(config);
 		services.addService(core.IServerConfig, cast config);
-		
+
 		// SideWinder core services
 		services.addService(ServiceType.Singleton, sidewinder.interfaces.ICacheService, sidewinder.interfaces.InMemoryCacheService);
 		services.addService(ServiceType.Singleton, sidewinder.interfaces.IJobStore, sidewinder.interfaces.InMemoryJobStore);
